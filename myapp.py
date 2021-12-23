@@ -19,7 +19,7 @@ list_of_questions = [
 
 
 db = sqlite3.connect(
-    r"/Users/dariamorozova/myproject/myproj/zhabiezhi.db"
+    r"zhabiezhi.db"
 )  # автоматически оно кидало базу данных в какой-то другой уголок компа, поэтому пришлось указать точный путь
 
 cur = db.cursor()
