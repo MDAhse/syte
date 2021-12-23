@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %} Анкета {% endblock %}
+
+{% block content %}
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			input{width: 100%}
+			input.radio{width: 10%}
+			input.submit{width: 100%}
+			select{width: 100%}
+			table{line-height: 300%}
+			p{font-size:16px}
+			ul{list-style-type: none}
+		</style>
+	</head>
+	<body>
+		<h2>ЖАБЫ ИЛИ ЕЖИ? ПРОТИВОСТОЯНИЕ ГОДА</h2>
+		<form class="container" action="/process">
+			<h4>Анкета информанта</h4>
+			<div class="row">
+				<div class="col-md-4">Возраст</div>
+				<div class="col-md-4"><input type="number" name="age"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Гендер</div>
+				<select name="gender" class="col-md-4">
+					<option value="male">жен</option>
+					<option value="female">муж</option>
+					<option value="other">другой</option>
+				</select>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Город рождения</div>
+				<div class="col-md-4"><input type="text" name="hometown"></div>
+			</div>
+			 <h2>Вопросы</h2>
+            {% for question in questions %}
+          <div class="row">
+            <p class="col-md-6">{{question.text}}</p>
+          <table class="col-md-8">
+            <tr>
+              <td><input class="radio" type="radio" name="q{{ question.id }}" value=1></td>
+              <td><input class="radio" type="radio" name="q{{ question.id }}" value=2></td>
+            </tr>
+            <tr>
+              <td>да</td>
+              <td>нет</td>
+            </tr>
+          </table>
+		  </div>
+            {% endfor %}
+			<br>
+			<div class="row">
+				<p class="col-md-6">"Кого вы любите больше (меньше не любите?)"</p>
+				<table class="col-md-8">
+					<tr>
+						<td><input class="radio" type="radio" name="q5" value=2></td>
+						<td><input class="radio" type="radio" name="q5" value=1></td>
+					</tr>
+					<tr>
+						<td>ежей</td>
+						<td>жаб</td>
+					</tr>
+				</table>
+			<br>
+			<br>
+			<div class="row">
+				<p class="col-md-6">Ваше любимое животное?</p>
+				<div class="col-md-4"><input type="text" name=q6></div>
+			<br>
+			<br>
+			<div class="row">
+				<p class="col-md-6">Какое идеальное имя для жабы?</p>
+				<div class="col-md-4"><input type="text" name=q7></div>
+			<br>
+			<br>
+			<div class="row">
+				<p class="col-md-6">Какое идеальное имя для ежа?</p>
+				<div class="col-md-4"><input type="text" name=q8></div>
+			<br>
+			<br>
+			<div class="row">
+				<p class="col-md-6">Ваши отзывы/вопросы/предложения</p>
+				<div class="col-md-4"><input type="text" name=q9></div>
+			<br>
+			<br>
+			<p align="center">
+			<div class="row">
+				<input class="submit" type="submit" name="submit" value="Отправить">
+			</div>
+		</p>
+		</form>
+	</body>
+</html>
+{% endblock %}
